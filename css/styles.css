@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #EDF2F4;
+}
+
+.to-do-list {
+	margin: 50px 0 0 50px;
+	padding: 35px;
+	width: 440px;
+	border: 1px solid rgba(176, 183, 193, .4);
+	-webkit-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
+	background-color: #FFF1D0;
+}
+
+.to-do-list__header {
+	font-size: 26px;
+	text-align: center;
+}
+
+.to-do-list__list {
+	margin: 26px 0;
+}
+
+.to-do-list__item {
+	list-style-position: inside;
+	line-height: 35px;
+	font-size: 22px;
+}
+
+.to-do-list__button {
+	float: right;
+	margin: 5px;
+	width: 35px;
+	height: 35px;
+	-webkit-background-size: 35px;
+	background-size: 35px;
+}
+
+.to-do-list__button--edit {
+	background-image: url(../img/pencil.svg);
+}
+
+.to-do-list__button--delete {
+	background-image: url(../img/flame.svg);
+}
+
+.to-do-list__addition {
+	padding: 25px;
+	border: 1px solid grey;
+	border-radius: 25px;
+}
+
+.to-do-list__addition-button {
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #77B3D4;
+}
