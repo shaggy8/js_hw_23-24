@@ -16,8 +16,8 @@ body {
 
 .to-do-list {
 	margin: 50px 0 0 50px;
-	padding: 35px;
-	width: 440px;
+	padding: 35px 35px 60px 35px;
+	width: 33%;
 	border: 1px solid rgba(176, 183, 193, .4);
 	-webkit-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 10px 10px 17px 0px rgba(0,0,0,0.75);
@@ -31,7 +31,7 @@ body {
 }
 
 .to-do-list__list {
-	margin: 26px 0;
+	margin: 26px 0 0 0;
 }
 
 .to-do-list__item {
@@ -57,14 +57,26 @@ body {
 	background-image: url(../img/flame.svg);
 }
 
-.to-do-list__addition {
-	padding: 25px;
-	border: 1px solid grey;
-	border-radius: 25px;
+.to-do-list__button--add {
+	margin: 5px 50px 5px 5px;
+	background-image: url(../img/compose.svg);
 }
 
-.to-do-list__addition-button {
-	padding: 5px;
-	border-radius: 5px;
-	background-color: #77B3D4;
+.to-do-list__button--ok {
+	display: none;
+	background-image: url(../img/pin.svg);
+}
+
+.to-do-list__button--cancel {
+	display: none;
+	background-image: url(../img/denied.svg);
+}
+
+.to-do-list__input {
+	margin: 5px;
+	width: 300px;
+	height: 35px;
+	border: none;
+	background-color: #FFF1D0;
+	font-size: 22px;
 }
