@@ -4,11 +4,11 @@ require(
 
     var firstList = ['fuck', 'my', 'brain!', 'i', 'did', 'it!'];
 
-    var mod = new Model(firstList);
+    var model = new Model(firstList);
+    model.edit(2); console.log(model.data);
+    var view = new View(model, $('.to-do-list__list'), 'list');
 
-    var vie = new View(mod, $('.to-do-list__list'), 'list');
-
-    var contr = new Controller(mod, vie);
+    var controller = new Controller(model, view);
     
   }
 );

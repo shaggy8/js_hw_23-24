@@ -14,48 +14,46 @@ define(
       };
 
       this.startEdit = function($elem) {
+        var $li = $elem.parent();
         var elems = {
-          '$span': $elem.siblings('.to-do-list__item-text'),
-          '$li': $elem.parent(),
-          '$btnEdit': $elem.siblings('.to-do-list__button--edit'),
-          '$btnsOkCancel': $elem.siblings('.to-do-list__button--ok, .to-do-list__button--cancel'),
+          '$span': $li.children('.to-do-list__item-text'),
+          '$btns': $li.children('a'),
+          '$btnEdit': $li.children('.to-do-list__button--edit'),
         }
-        var txt = $span.text();
+        var txt = elems.$span.text();
 
         elems.$span.css({'display': 'none'});
+        elems.$btns.css({'display': 'block'});
         elems.$btnEdit.css({'display': 'none'});
-        elems.$btnsOkCancel.css({'display': 'block'});
-        elems.$li.prepend('<input type="text" class="to-do-list__input">')
-          .val(txt);
-        // $span.siblings('.to-do-list__input');
+        $li.prepend('<input type="text" class="to-do-list__input to-do-list__input--edit">');
+        $li.children('.to-do-list__input').focus().val(txt);
+
         return self;
       };
 
       this.change = function($elem) {
         var txt = $elem.siblings('.to-do-list__input').val();
         $elem.siblings('.to-do-list__item-text').text(txt);
+
         return self;
       };
 
       this.endEdit = function($elem) {
+        var $li = $elem.parent();
         var elems = {
-          '$span': $elem.siblings('.to-do-list__item-text'),
-          '$input': $elem.siblings('.to-do-list__input'),
-          '$btnEdit': $elem.siblings('.to-do-list__button--edit'),
-          '$btnsOkCancel': $elem.siblings('.to-do-list__button--ok, .to-do-list__button--cancel'),
+          '$span': $li.children('.to-do-list__item-text'),
+          '$input': $li.children('.to-do-list__input'),
+          '$btns': $li.children('a'),
+          '$btnEdit': $li.children('.to-do-list__button--edit'),
+          '$btnDelete': $li.children('.to-do-list__button--delete'),
         }
-        var txt = $span.text();
-
-        elems.$span.css({'display': 'block'});
+        
+        elems.$span.css({'display': 'inline'});
+        elems.$btns.css({'display': 'none'});
         elems.$btnEdit.css({'display': 'block'})
-        elems.$btnsOkCancel.css({'display': 'none'});
+        elems.$btnDelete.css({'display': 'block'});
         elems.$input.remove();
 
-        return self;
-      };
-
-      this.delete = function($elem) {
-        $elem.parent().remove();
         return self;
       };
 
