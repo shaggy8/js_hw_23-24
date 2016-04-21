@@ -2,19 +2,21 @@ define(
   'model',
   [],
   function () {
+
+
     function Model (data) {
       this.data = data;
     }
 
-    Model.prototype.add = function(text) {
-      if (!text) return;
-      this.data.push(text);
+    Model.prototype.add = function(txt) {
+      if (!txt) return;
+      this.data.push(txt);
     };
 
-    Model.prototype.edit = function(index, text) {
+    Model.prototype.edit = function(index, txt) {
       if (!arguments.length) return;
-      if (text) {
-        this.data.splice(index, 1, text);
+      if (txt) {
+        this.data.splice(index, 1, txt);
       } else {
         this.data.splice(index, 1);
       }

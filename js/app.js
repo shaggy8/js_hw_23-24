@@ -1,9 +1,15 @@
 require(
   ['jquery', 'tmpl', 'model', 'view', 'controller'],
-  function ($, tmpl, model, view, controller) {
-    var mod = new model(['fuck', 'my', 'brain']);
-    mod.edit(1, 'your');
-    console.log(mod.data);
+  function ($, tmpl, Model, View, Controller) {
+
+    var firstList = ['fuck', 'my', 'brain!', 'i', 'did', 'it!'];
+
+    var mod = new Model(firstList);
+
+    var vie = new View(mod, $('.to-do-list__list'), 'list');
+
+    var contr = new Controller(mod, vie);
+    
   }
 );
 
