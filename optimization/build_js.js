@@ -1,19 +1,12 @@
 ({
-    appDir: "../",
-    baseUrl: "js",
-    dir: "build",
-    modules: [
-        {
-            name: "main"
-        }
-    ]
-})
-
-({
-    baseUrl: ".",
-    name: "main",
-    out: "main-built.js",
-    paths: {
-        jquery: "empty:"
-    }
+  baseUrl: "../js",
+  paths: {
+    requireLib: 'require',
+    jquery: 'empty:',
+  },
+  shim: {'tmpl': {exports: 'tmpl'}},
+  optimize: "uglify2",
+  include: ["requireLib"],
+  name: "app",
+  out: "../built/scripts-min.js"
 })

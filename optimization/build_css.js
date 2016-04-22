@@ -1,5 +1,5 @@
 ({
 	optimizeCss: "standard",
 	cssIn: "../css/styles.css",
-    out: "../build/styles-min.css",
+    out: "../built/styles-min.css",
 })
