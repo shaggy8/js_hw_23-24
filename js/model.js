@@ -8,18 +8,22 @@ define(
       this.data = data;
     }
 
-    Model.prototype.add = function(txt) {
-      if (!txt) return;
-      this.data.push(txt);
+    Model.prototype.add = function(text) {
+      if (!text) return;
+      this.data.push(text);
+
+      localStorage['to-do-list'] = JSON.stringify(this.data);
     };
 
-    Model.prototype.edit = function(index, txt) {
+    Model.prototype.edit = function(index, text) {
       if (!arguments.length) return;
-      if (txt) {
-        this.data.splice(index, 1, txt);
+      if (text) {
+        this.data.splice(index, 1, text);
       } else {
         this.data.splice(index, 1);
       }
+      
+      localStorage['to-do-list'] = JSON.stringify(this.data);
     };
 
 

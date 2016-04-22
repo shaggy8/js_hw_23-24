@@ -2,13 +2,22 @@ require(
   ['jquery', 'tmpl', 'model', 'view', 'controller'],
   function ($, tmpl, Model, View, Controller) {
 
-    var firstList = ['fuck', 'my', 'brain!', 'i', 'did', 'it!'];
+    var firstList = ['заварити чай',
+                     'вивчити javaScript',
+                     'попити чаю',
+                     'зробити гімнастику',
+                     'полити кактуси'];
 
-    var model = new Model(firstList);
-    model.edit(2); console.log(model.data);
-    var view = new View(model, $('.to-do-list__list'), 'list');
+    if (!localStorage['to-do-list']) {
+      localStorage['to-do-list'] = JSON.stringify(firstList);
+    }
+    var savedList = JSON.parse(localStorage['to-do-list']);
 
-    var controller = new Controller(model, view);
+    var model = new Model(savedList);
+
+    var view = new View(model, 'list', $('.to-do-list__list'));
+
+    var controller = new Controller(model, view, $('.to-do-list__list'));
     
   }
 );

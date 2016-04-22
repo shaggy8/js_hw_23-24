@@ -62,7 +62,7 @@ body {
 	background-image: url(../img/compose.svg);
 }
 
-.to-do-list__button--ok {
+.to-do-list__button--apply {
 	display: none;
 	background-image: url(../img/pin.svg);
 }

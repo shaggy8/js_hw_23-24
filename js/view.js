@@ -4,57 +4,40 @@ define(
   function () {
 
 
-    function View (model, $dom, template) {
-      var self = this;
+    function View (model, template, $dom) {
+      var elems;
 
       this.render = function() {
         var htmlText = tmpl(template, {data: model.data});
         $dom.html(htmlText);
-        return self;
-      };
 
-      this.startEdit = function($elem) {
-        var $li = $elem.parent();
-        var elems = {
-          '$span': $li.children('.to-do-list__item-text'),
-          '$btns': $li.children('a'),
-          '$btnEdit': $li.children('.to-do-list__button--edit'),
+        elems = {
+          '$li': $('.to-do-list__item'),
+          '$span': $('.to-do-list__item-text'),
+          '$btnEdit': $('.to-do-list__button--edit'),
+          '$btnDelete': $('.to-do-list__button--delete'),
+          '$btnApply': $('.to-do-list__button--apply'),
+          '$btnCancel': $('.to-do-list__button--cancel'),
         }
-        var txt = elems.$span.text();
-
-        elems.$span.css({'display': 'none'});
-        elems.$btns.css({'display': 'block'});
-        elems.$btnEdit.css({'display': 'none'});
-        $li.prepend('<input type="text" class="to-do-list__input to-do-list__input--edit">');
-        $li.children('.to-do-list__input').focus().val(txt);
-
-        return self;
       };
 
-      this.change = function($elem) {
-        var txt = $elem.siblings('.to-do-list__input').val();
-        $elem.siblings('.to-do-list__item-text').text(txt);
+      this.startEdit = function(index) {
+        var text = elems.$span.eq(index).text();
 
-        return self;
+        elems.$span.eq(index).hide();
+        elems.$btnEdit.eq(index).hide();
+        elems.$btnApply.eq(index).show();
+        elems.$btnCancel.eq(index).show();
+        elems.$li.eq(index).prepend('<input type="text" class="to-do-list__input to-do-list__input--edit" value="' + text + '">');
+        $('.to-do-list__input--edit').focus();
       };
 
-      this.endEdit = function($elem) {
-        var $li = $elem.parent();
-        var elems = {
-          '$span': $li.children('.to-do-list__item-text'),
-          '$input': $li.children('.to-do-list__input'),
-          '$btns': $li.children('a'),
-          '$btnEdit': $li.children('.to-do-list__button--edit'),
-          '$btnDelete': $li.children('.to-do-list__button--delete'),
-        }
-        
-        elems.$span.css({'display': 'inline'});
-        elems.$btns.css({'display': 'none'});
-        elems.$btnEdit.css({'display': 'block'})
-        elems.$btnDelete.css({'display': 'block'});
-        elems.$input.remove();
-
-        return self;
+      this.endEdit = function(index) {
+        elems.$span.eq(index).show();
+        elems.$btnEdit.eq(index).show();
+        elems.$btnApply.eq(index).hide();
+        elems.$btnCancel.eq(index).hide();
+        elems.$li.eq(index).children('.to-do-list__input--edit').remove();
       };
 
       this.render();
